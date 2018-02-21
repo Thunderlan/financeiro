@@ -12,6 +12,27 @@ def calcula_inss(sal_bruto):
 	# retorna desc_inss
 	return desc_inss
 
+# Função para calcular o imposto de renda
+def calcula_irpf(sal_bruto,num_dependentes,desc_inss):
+	# Calcula o valor de desconto por dependetes
+	desc_dependentes = num_dependentes * 100
+
+	# Calcula o salário base
+	sal_base = sal_bruto - (desc_inss + desc_dependentes)
+
+	# Testa a faixa de desconto em que o funcionário está
+	# e atribui o valor à variável desc_irpf
+	if(sal_base < 2000):
+		desc_irpf = 0
+	
+	if(sal_base > 2000 && sal_base < 5000):
+		desc_irpf = sal_base * 0.15
+
+	if(sal_base > 5000):
+		desc_irpf = sal_base * 0.275
+
+	return sal_base,desc_dependentes,desc_irpf
+
 # Solicita os dados ao usuário
 sal_bruto = float(input("Digite o valor do salario bruto: "))
 num_dependentes = int(input("Digite o número de dependentes: "))
@@ -19,6 +40,14 @@ num_dependentes = int(input("Digite o número de dependentes: "))
 # calcula o valor do desconto do INSS e atribui à variável desc_inss 
 desc_inss = float(calcula_inss(sal_bruto))
 
-# imprime o valor do desconto
+# Calcula o valor do salário base, o desconto por denpendentes
+# e o desconto do IRPF 
+sal_base,desc_dependentes,desc_irpf = calcula_irpf(sal_bruto,num_dependentes,desc_inss)
+
+
+# imprime o bilhete de pagamento
+print("Salário bruto: R$ %.2f"%(sal_bruto))
 print("Desconto do INSS: R$ %.2f"%(desc_inss))
+print("Desconto por dependentes: R$ %.2f"%(desc_dependentes))
+print("Desconto IRPF: R$ %.2f"%(desc_irpf))
 
