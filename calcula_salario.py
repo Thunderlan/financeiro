@@ -25,7 +25,7 @@ def calcula_irpf(sal_bruto,num_dependentes,desc_inss):
 	if(sal_base < 2000):
 		desc_irpf = 0
 	
-	if(sal_base > 2000 && sal_base < 5000):
+	if(sal_base > 2000 and sal_base < 5000):
 		desc_irpf = sal_base * 0.15
 
 	if(sal_base > 5000):
@@ -45,6 +45,7 @@ desc_inss = float(calcula_inss(sal_bruto))
 sal_base,desc_dependentes,desc_irpf = calcula_irpf(sal_bruto,num_dependentes,desc_inss)
 
 # Calcula salário líquido e atribui à variável sal_liquido
+sal_liquido = sal_bruto - (desc_inss + desc_dependentes + desc_irpf)
 
 # imprime o bilhete de pagamento
 print("Salário bruto: R$ %.2f"%(sal_bruto))
