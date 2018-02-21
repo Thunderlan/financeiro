@@ -25,10 +25,10 @@ def calcula_irpf(sal_bruto,num_dependentes,desc_inss):
 	if(sal_base < 2000):
 		desc_irpf = 0
 	
-	if(sal_base > 2000 and sal_base < 5000):
+	elif(sal_base > 2000 and sal_base < 5000):
 		desc_irpf = sal_base * 0.15
 
-	if(sal_base > 5000):
+	elif(sal_base > 5000):
 		desc_irpf = sal_base * 0.275
 
 	return sal_base,desc_dependentes,desc_irpf
