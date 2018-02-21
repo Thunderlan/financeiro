@@ -45,11 +45,10 @@ desc_inss = float(calcula_inss(sal_bruto))
 sal_base,desc_dependentes,desc_irpf = calcula_irpf(sal_bruto,num_dependentes,desc_inss)
 
 # Calcula salário líquido e atribui à variável sal_liquido
-sal_liquido = sal_bruto - (desc_inss + desc_dependentes + desc_irpf)
+sal_liquido = sal_bruto - (desc_inss + desc_irpf)
 
 # imprime o bilhete de pagamento
 print("Salário bruto: R$ %.2f"%(sal_bruto))
 print("Desconto do INSS: R$ %.2f"%(desc_inss))
-print("Desconto por dependentes: R$ %.2f"%(desc_dependentes))
 print("Desconto IRPF: R$ %.2f"%(desc_irpf))
 print("Salário líquido: R$ %.2f"%(sal_liquido))
